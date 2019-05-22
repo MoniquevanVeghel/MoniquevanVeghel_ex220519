@@ -1,0 +1,11 @@
+NCBI gene search for MYCN AND zebrafish click on MYCN and retrieve the ID: NM_212614.2 ligt op chromosome 20, start positie: 33294442
+
+ncbi mycn and human geeft ID: ENSG00000134323zoek de homoloog op in zebrafish (is danio rerio):
+
+$curl 'https://rest.ensembl.org/homology/id/ENSG00000134323?type=orthologues;target_species=zebrafish' -H 'Content-type:application/json'
+
+id van de zebrafish = ENSDARP00000026640
+dan de eerste 100 basen te vinden met:
+$curl 'https://rest.ensembl.org/sequence/region/zebrafish/20:33294442..33294541?' -H 'Content-type:text/plain'
+
+ACAGCCCGAAACACAGAGGCGCAGAACAGTCTTCAGTCGCCGCGGTAGATGTGCGACTCCAAACGGGAGGCACAGTGACTGCGATAAAGAAGGGACAAGA
