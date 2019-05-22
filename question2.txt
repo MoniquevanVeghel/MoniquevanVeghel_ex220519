@@ -1,0 +1,34 @@
+﻿// UNF: Group all data in one entity
+// 1NF: eliminate repeating (and calculated) groups + create separate table for each set of related data + Identify each set with a primary key
+// 2NF: every  non-prime attribute of the table is dependent on the whole key of every candidate key
+// 3NF: Every non-prime attribute is non-transitively dependent on every key
+// BCNF: Any attribute on which some other attribute is fully functionally dependent + every determinant is a candidate key
+
+// Solution:
+
+all data in one entity, underline pK, tussen haken de repeating fields
+
+UNF: lab (PersNo, Name, Birth_of_Date, Lab_code, Lab_name, (Res_Code, Res_description, Res_Supervisor))
+
+
+scheiden repeterende groepen:
+
+1NF: lab ( PersNo, Name, Birth_of_Date, Lab_code, Lab_name)
+	Research (PersNo, Res_Code, Res_description, Res_Supervisor)
+
+keys zijn PersNo en Res_Code
+
+elk attribuut dat maar voor een deel van de sleutel afhangt wordt in eigen entiteit afgesplitst:
+
+2NF: Person ( PersNo, Name, Birth_of_Date)
+	lab (PersNo, Lab_code, Lab_name)
+	Research (PersNo, Res_Code, Res_description, Res_Supervisor)
+
+keys zijn PersNo en Res_Code, lab_code
+
+elk attribute dat niet afhangt van een sleutelattribuut afsplitsen in eigen entiteit. Is hier niet dus 2NF = 3NF
+
+3NF: Person ( PersNo, Name, Birth_of_Date)
+	lab (PersNo, Lab_code, Lab_name)
+	Research (PersNo, Res_Code, Res_description, Res_Supervisor)
+
