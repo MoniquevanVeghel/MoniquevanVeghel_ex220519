@@ -1,0 +1,19 @@
+question4:
+
+select gene_name, (seq_region_end - seq_region_start) as length from gene order by length limit 1;
+
+# gene_name, length
+'TRDD1', '7'
+
+question5:
+Give the name of the chromosome with the second most genes that tell something about cancer. What is the number of exons of this chromosome? (2 queries)
+
+select chromosome, count(gene_name) as total_genes from gene where description like "%cancer%" group by chromosome order by total_genes desc limit 1 offset 1;
+
+# chromosome, total_genes
+'9', '5'
+
+select count(exon.exon_id) from exon join exon_transcript on exon.exon_id=exon_transcript.exon_id join transcript on exon_transcript.transcript_id = transcript.transcript_id join gene on transcript.gene_id=gene.gene_id where chromosome = 9;
+
+# count(exon.exon_id)
+'45679'
